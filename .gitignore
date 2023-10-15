@@ -41,5 +41,5 @@ bin/
 ### Mac OS ###
 .DS_Store
 
-### SENSITIVE DATA ##
+### SENSITIVE DATA ###
 SensitiveConstants.kt
