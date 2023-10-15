@@ -1,4 +1,6 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import org.jetbrains.kotlin.gradle.utils.loadPropertyFromResources
+import java.util.*
 
 plugins {
     kotlin("multiplatform")
@@ -24,6 +26,7 @@ kotlin {
         val jvmMain by getting {
             dependencies {
                 implementation(compose.desktop.currentOs)
+                implementation(kotlin("reflect"))
             }
         }
         val jvmTest by getting
@@ -42,6 +45,8 @@ compose.desktop {
     application {
         mainClass = "MainKt"
         nativeDistributions {
+            fromFiles(project.fileTree("libs/") { include("**/*.jar") })
+
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "Unsplash Explorer"
             packageVersion = "1.0.0"
