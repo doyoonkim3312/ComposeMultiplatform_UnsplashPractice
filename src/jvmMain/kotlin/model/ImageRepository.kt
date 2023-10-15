@@ -9,20 +9,16 @@ class ImageRepository(
 
     fun fetchImageByKtor(keyword: String) = flow<Result<UnsplashImage>> {
         remoteSource.requestByKtor(keyword).results?.forEach { received ->
-            if (received != null) {
-                emit(
-                    Result.success(
-                        UnsplashImage(
-                            id = received.id!!,
-                            user = received.user!!.name,
-                            imageUrl = received.urls!!.regular,
-                            urlSelf = received.links!!.html!!
-                        )
+            emit(
+                Result.success(
+                    UnsplashImage(
+                        id = received.id!!,
+                        user = received.user!!.name,
+                        imageUrl = received.urls!!.regular,
+                        urlSelf = received.links!!.html!!
                     )
                 )
-            } else {
-                emit(Result.failure(Exception("Unable to process the request.")))
-            }
+            )
         }
     }
 
@@ -32,6 +28,10 @@ class ImageRepository(
         fun getInstance(): ImageRepository {
             if (INSTANCE == null) INSTANCE = ImageRepository()
             return INSTANCE!!
+        }
+
+        fun clear() {
+            INSTANCE = null
         }
     }
 }
