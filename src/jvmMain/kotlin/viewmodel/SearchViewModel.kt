@@ -20,7 +20,7 @@ class SearchViewModel(
     val state = _state.asStateFlow()
 
 
-    fun updateSearchKeyword(newValue: TextFieldValue) {
+    val updateKeyword: (TextFieldValue) -> Unit = { newValue ->
         _state.update {
             it.copy(
                 searchKeyword = newValue
@@ -80,6 +80,10 @@ class SearchViewModel(
         fun getInstance(): SearchViewModel {
             if (INSTANCE == null) INSTANCE = SearchViewModel()
             return INSTANCE!!
+        }
+
+        fun clear() {
+            INSTANCE = null
         }
     }
 

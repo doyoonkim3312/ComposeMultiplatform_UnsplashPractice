@@ -50,7 +50,7 @@ fun SearchScreen(
                 .wrapContentHeight()
                 .padding(10.dp),
             value = state.searchKeyword,
-            onValueChange = { viewModel.updateSearchKeyword(it) },
+            onValueChange = { viewModel.updateKeyword(it) },
             singleLine = true,
             shape = RoundedCornerShape(15.dp)
         )
