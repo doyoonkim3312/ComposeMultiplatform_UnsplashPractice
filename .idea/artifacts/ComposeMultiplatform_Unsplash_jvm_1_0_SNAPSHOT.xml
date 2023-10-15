@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ComposeMultiplatform_Unsplash-jvm-1.0-SNAPSHOT">
+    <output-path>$PROJECT_DIR$/build/libs</output-path>
+    <root id="archive" name="ComposeMultiplatform_Unsplash-jvm-1.0-SNAPSHOT.jar">
+      <element id="module-output" name="ComposeMultiplatform_Unsplash.jvmMain" />
+    </root>
+  </artifact>
+</component>
